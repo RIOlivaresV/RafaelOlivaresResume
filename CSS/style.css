@@ -1,0 +1,16 @@
+body{
+    width: 200%;
+}
+
+#container1 {
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 10px;
+    height: 100%;
+    float: left;
+}
+
+#myseft{
+    max-width: inherit;
+}
