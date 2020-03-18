@@ -1,16 +1,55 @@
 body{
-    width: 200%;
+    width: 300%;
+    max-height: 100%;
+    /* overflow: hidden; */
 }
 
-#container1 {
+#containerGeneral {
+    position: relative;
+}
+
+#containerGeneral::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+
+#containerPresentation {
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 10px;
+    position: absolute;
+    width: 30%;
+    margin: 1%;
+    float: left;
+}
+
+#container2 {
     border: solid;
     border-width: 2px;
     border-color: black;
     border-radius: 10px;
     height: 100%;
+    width: 30%;
+    margin: 1%;
+    float: left;
+}
+
+#container3 {
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 10px;
+    height: 100%;
+    width: 30%;
+    margin: 1%;
     float: left;
 }
 
 #myseft{
     max-width: inherit;
+}
+
+.containerGeneral{
+    max-height: 100vh;
 }
