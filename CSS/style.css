@@ -1,55 +1,56 @@
 body{
-    width: 300%;
+    width: 100%;
     max-height: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
-#containerGeneral {
+.general {
     position: relative;
+    max-height: 100vh;
+    width: 100%;
 }
 
-#containerGeneral::-webkit-scrollbar {
+.general::-webkit-scrollbar {
     background-color: transparent;
 }
 
 
-#containerPresentation {
+.containerPresentation {
     border: solid;
     border-width: 2px;
     border-color: black;
     border-radius: 10px;
     position: absolute;
-    width: 30%;
-    margin: 1%;
+    width: 98%;
+    margin: 0.5%;
+    height: 97vh;
     float: left;
 }
 
-#container2 {
-    border: solid;
-    border-width: 2px;
-    border-color: black;
-    border-radius: 10px;
-    height: 100%;
-    width: 30%;
-    margin: 1%;
-    float: left;
+#ingredients{
+    position: absolute;
+    float: left;  
 }
 
-#container3 {
-    border: solid;
-    border-width: 2px;
-    border-color: black;
-    border-radius: 10px;
-    height: 100%;
-    width: 30%;
-    margin: 1%;
-    float: left;
+.ingredients{
+    transition: .5 ease;
+    opacity: 1;
+}
+.ingredients:hover{
+    opacity: 0.5;
 }
 
-#myseft{
+#jalapino, #onion, #tomato{
+    position: relative;
+}
+#containerPicture{
     max-width: inherit;
+    position: absolute;
 }
 
-.containerGeneral{
-    max-height: 100vh;
+#bowl{
+    position: absolute;
+    bottom: -50vh;
+    width: 100%;
+    text-align: center;
 }
