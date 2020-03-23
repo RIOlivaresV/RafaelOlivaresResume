@@ -56,15 +56,6 @@ window.addEventListener("wheel", function(event){
     }
 });
 
-<<<<<<< HEAD
-=======
-    //add the event to the wheel
-// window.addEventListener("scroll", function(event){
-//     // scrollMoving(event);
-//     console.log(window.scrollY);
-// });
-
->>>>>>> 8843ed01642bd75d1e45f83cdc280a9114901c39
 //move the position of the scroll and move the animation
 function scrollMoving(){
     //presentation
