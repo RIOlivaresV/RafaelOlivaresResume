@@ -32,14 +32,6 @@ function html_presentation($title){?>
             <div data-depth="0.2" id="containerPicture">
                     <img id="myseft" src="Img/yoN.png">
             </div>
-<<<<<<< HEAD
-=======
-            <!-- <div data-depth="0.6">
-                <div class="media-body">
-                    <h5>The best recipe for a Software Developer</h5>
-                </div>
-            </div> -->
->>>>>>> 8843ed01642bd75d1e45f83cdc280a9114901c39
             <div  id="ingredients" class="container align-self-center">
                 <div class="row">
                     <div id="jalapino" class="col-sm ih-item effect2 right_to_left" >
