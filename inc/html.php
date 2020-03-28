@@ -27,27 +27,38 @@ function html_footer(){?>
 
 function html_presentation($title){?>
     <div class="general">
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar" data-toggle="tooltip" title="Holi"></div>
+        </div>
         <div data-relative-input="true" id="scene" class="containerPresentation card-body">
             <div class="card-title" id="title"></div>
             <div data-depth="0.2" id="containerPicture">
                     <img id="myseft" src="Img/yoN.png">
             </div>
-            <div  id="ingredients" class="container align-self-center">
-                <div class="row">
-                    <div id="jalapino" class="col-sm ih-item effect2 right_to_left" >
-                        <img src="Img/jalapino.png" class="ingredients">
-                        <div></div>
-                    </div>
-                    <div id="onion" class="col-sm">
-                        <img src="Img/onion.png" class="ingredients">
-                    </div>
-                    <div id="tomato" class="col-sm">
-                        <img src="Img/tomato.png" class="ingredients">
+            <div id="textPresentation">
+                <scan> The best recipe for a Software Developer</scan>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div  id="ingredients" class="container">
+                    <div class="row align-self-center">
+                        <div id="jalapino" class="col-sm" >
+                            <img src="Img/jalapino.png" class="ingredients">
+                            <div></div>
+                        </div>
+                        <div id="onion" class="col-sm">
+                            <img src="Img/onion.png" class="ingredients">
+                        </div>
+                        <div id="tomato" class="col-sm">
+                            <img src="Img/tomato.png" class="ingredients">
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="bowl" class="align-self-center">
                 <img src="Img/bowl.png">
+            </div>
+            <div id="result" class="align-self-center">
+                <img src="Img/result.png">
             </div>
         </div>
     </div>
