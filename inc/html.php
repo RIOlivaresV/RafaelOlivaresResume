@@ -13,6 +13,7 @@ function html_header($title){?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ingredients.css">
     <script type="text/javascript" src="Js/mouse.js"></script>
 </head>
 <body>
@@ -40,16 +41,155 @@ function html_presentation($title){?>
             </div>
             <div class="d-flex justify-content-center">
                 <div  id="ingredients" class="container">
-                    <div class="row align-self-center">
+                    <div class="row">
                         <div id="jalapino" class="col-sm" >
                             <img src="Img/jalapino.png" class="ingredients">
-                            <div></div>
+                            <div id="coding">
+                                <ul style="list-style-type:none">
+                                    <li>
+                                        <div class="skill">C#</div>
+                                        <div class="bar">
+                                            <div class="porcent" id="c">80%</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="skill">PHP</div>
+                                        <div class="bar">
+                                            <div class="porcent" id="php">70%</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="skill">Java</div>
+                                        <div class="bar">
+                                            <div class="porcent" id="java">60%</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="skill">JavaScript</div>
+                                        <div class="bar">
+                                            <div class="porcent" id="js">70%</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="skill">Jquery</div>
+                                        <div class="bar">
+                                            <div class="porcent" id="jq">50%</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="skill">HTML</div>
+                                        <div class="bar">
+                                            <div class="porcent" id="html">90%</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="skill">CSS</div>
+                                        <div class="bar">
+                                            <div class="porcent" id="css">90%</div>
+                                        </div>
+                                    </li>
+                                    <!-- <li>
+                                        <div class="skill">SQL / MySQL</div>
+                                        <div class="bar">
+                                            <div id="db">SQL / MySQL</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="skill">MongoDB</div>
+                                        <div class="bar">
+                                            <div id="mongo">MongoDB</div>
+                                        </div>
+                                    </li> -->
+                                </ul>
+                            </div>
                         </div>
                         <div id="onion" class="col-sm">
                             <img src="Img/onion.png" class="ingredients">
+                            <div id="experience">
+                                <ul style="list-style-type:none">
+                                    <li>
+                                        <div class="card">
+                                            <div class="flip-card">
+                                                <div class="card-front">
+                                                   <span class="align-middle">Fresh Fast Pizza</span>
+                                                </div>
+                                                <div class="card-back align-middle">
+                                                    <a href="http://freshfastpizza.ca/" target="_blank" data-toggle="tooltip" title="More about Fresh Fast Pizza"><h3>Fresh Fast Pizza</h3></a>
+                                                    <span>Oct 2019 - Feb 2020</span><br>
+                                                    <span>WordPress, HTML, CSS</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="card">
+                                            <div class="flip-card">
+                                                <div class="card-front">
+                                                   <span class="align-middle">Autostrada Osteria</span>
+                                                </div>
+                                                <div class="card-back align-middle">
+                                                    <a href="https://autostrada.azurewebsites.net/" target="_blank" data-toggle="tooltip" title="More about Autostrada Osteria"><h3>Autostrada Osteria</h3></a>
+                                                    <span>Nov 2018</span><br>
+                                                    <span>HTML, CSS, JavaScript</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="card">
+                                            <div class="flip-card">
+                                                <div class="card-front">
+                                                   <span class="align-middle">Smart Byte</span>
+                                                </div>
+                                                <div class="card-back align-middle">
+                                                    <a href="http://www.smartbyte.com.mx/" target="_blank" data-toggle="tooltip" title="More about Smart Byte"><h3>Smart Byte</h3></a>
+                                                    <span>Mar 2015 - Jul 2017</span><br>
+                                                    <span>C#, Devexpress, Addin-Express</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="card">
+                                            <div class="flip-card">
+                                                <div class="card-front">
+                                                    <span class="align-middle">Atento Servicios</span>
+                                                </div>
+                                                <div class="card-back align-middle">
+                                                <a href="http://atento.com/locations/mexico/" target="_blank" data-toggle="tooltip" title="More about Atento Servicios"><h3>Atento Servicios</h3></a>
+                                                    <span>Mar 2013 - Mar 2015</span><br>
+                                                    <span>PHP, WAMP, MySQL</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div id="tomato" class="col-sm">
                             <img src="Img/tomato.png" class="ingredients">
+                            <div id="ux">
+                                <ul style="list-style-type:none">
+                                    <li>
+                                        <div class="item">
+                                            <h3>Responsive</h3>
+                                            <span>A flavor that everybody likes</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item">
+                                            <h3>Useful</h3>
+                                            <span>Satisfying your hungry</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item">
+                                            <h3>Valuable</h3>
+                                            <span>You didn't get disappointed</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

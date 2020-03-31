@@ -1,0 +1,79 @@
+.bar{
+    width: 100%;
+    background-color:silver;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.skill{
+    text-align: center;
+    background-color: blue;
+    color: white;
+    width: 25%;
+    float: left;
+}
+
+.porcent{
+    color: white;
+    text-align: right;
+    padding-right: 1vw;
+}
+
+#c{
+    width: 80%;
+    background-color: royalblue;
+}
+
+#php{
+    width: 70%;
+    background-color: royalblue;
+}
+
+#java{
+    width: 60%;
+    background-color: royalblue;
+}
+
+#js{
+    width: 70%;
+    background-color: royalblue;
+}
+
+#jq{
+    width: 50%;
+    background-color: royalblue;
+}
+
+#html{
+    width: 90%;
+    background-color: royalblue;
+}
+
+#css{
+    width: 90%;
+    background-color: royalblue;
+}
+
+#db{
+    width: 70%;
+    background-color: royalblue;
+}
+
+#mongo{
+    width: 40%;
+    background-color: royalblue;
+}
+
+
+/* UX styles */
+.item{
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+}
+
+.item:hover{
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
+}

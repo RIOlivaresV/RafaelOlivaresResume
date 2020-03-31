@@ -27,6 +27,7 @@ window.onload = function(){
     this.scrollWidth = $('body').width();
     this.leftPosotion = document.getElementById("scene").offsetLeft;
     document.getElementById("ingredients").style.opacity = "0";
+    // $('[data-toggle="tooltip"]').tooltip();  
 };
 
 window.addEventListener("wheel", function(event){
