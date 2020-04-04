@@ -11,9 +11,16 @@ var bowlDistanceH =  0;
 var jalapinoDirection = 0;
 var onionDirection = 0;
 var tomatoDirection = 0;
-var result = 75;
+var result = 100;
 var resultDown = 15;
 var textLeft = 0;
+var processPosition = -40;
+var processTop= 10;
+var processOpacy = 0;
+var estimate = 100;
+var nutrimental = 100;
+var estimateOut = 0;
+var nutrimentalOut = 0;
 // console.log(scrollDown);
 
 // the first function is loading
@@ -27,26 +34,34 @@ window.onload = function(){
     this.scrollWidth = $('body').width();
     this.leftPosotion = document.getElementById("scene").offsetLeft;
     document.getElementById("ingredients").style.opacity = "0";
+    document.getElementById("process").style.left = "-40vw";
+    document.getElementById("process").style.top = "10vh";
+    document.getElementById("process").style.opacity = "0";
+    document.getElementById("estimate").style.top = "100vh";
+    document.getElementById("nutrimental").style.top = "100vh";
     // $('[data-toggle="tooltip"]').tooltip();  
 };
 
+// event to get the wheel moving
 window.addEventListener("wheel", function(event){
-    if (event.wheelDeltaX == 0) {
+    if (event.wheelDeltaX == 0) {   //for up and down
         var directionY = event.deltaY;
+        console.log("Delta: "+directionY);    
         if (directionY > 0) {
             directions[0]++;
             isUp = true;
             console.log(directions[0]);    
         }else{
-            if (directions[0]>0) {
+            if (directions[0]>0) {  
                 directions[0]--;
                 isUp = false;
                 console.log(directions[0]);       
             }
         }
         scrollMoving();
-    }if (event.wheelDeltaY == 0) {
+    }if (event.wheelDeltaY == 0) {  //for left and right
         var directionX = event.deltaX;
+        console.log("Delta: "+directionX);    
         if (directionX > 0) {
             directions[0]++;
             isUp = true;
@@ -64,6 +79,7 @@ window.addEventListener("wheel", function(event){
 
 //move the position of the scroll and move the animation
 function scrollMoving(){
+    // console.log(directions[0]);
     var progressbar= (directions[0]/240)*100;
     document.getElementById("progressBar").style.width = progressbar+"%";
     //presentation
@@ -81,8 +97,10 @@ function scrollMoving(){
     } if (directions[0] > 60 && directions[0] < 110) {
         if (isUp) {
             moveBowl(bowlDistance+=1);
+            moveProcess(processPosition+=1, processOpacy+=0.02)
         }else{
             moveBowl(bowlDistance-=1);
+            moveProcess(processPosition-=1, processOpacy-=0.02)
         }
         //vegetables animation jalapino
     } if (directions[0] > 100 && directions[0] < 110) {
@@ -109,10 +127,16 @@ function scrollMoving(){
     } if (directions[0] > 150 && directions[0] < 190) {
         if (isUp) {
             moveBowlOut(bowlDistanceH-=2);
-            moveResult(result-=2);
+            moveProcessOut(processTop-=2)
+            moveResult(result-=2.6);
+            moveEstimate(estimate-=2);
+            moveNutrimental(nutrimental-=2);
         }else{
             moveBowlOut(bowlDistanceH+=2);
-            moveResult(result+=2);
+            moveProcessOut(processTop+=2)
+            moveResult(result+=2.6);
+            moveEstimate(estimate+=2);
+            moveNutrimental(nutrimental+=2);
         }
     }
     // MOve picture to the right
@@ -128,9 +152,13 @@ function scrollMoving(){
         if (isUp) {
             moveResultDown(resultDown+=2);
             movePicture(imageTop+=2);  
+            moveEstimateOut(estimateOut+=2);
+            moveNutrimentalOut(nutrimentalOut+=2);
         }else{
             moveResultDown(resultDown-=2);
             movePicture(imageTop-=2);  
+            moveEstimateOut(estimateOut-=2);
+            moveNutrimentalOut(nutrimentalOut-=2);
         }
     }
 
@@ -170,6 +198,11 @@ function movePictureLeft(imageLeft){
 function moveBowl(bowlDistance){
     document.getElementById("bowl").style.bottom = (bowlDistance)+"vh";
 }
+
+function moveProcess(processPosition, processOpacy){
+    document.getElementById("process").style.left = processPosition+"vw";
+    document.getElementById("process").style.opacity = processOpacy;
+}
 // function that move the jalapino
 function moveJalapino(jalapinoDirection){
     document.getElementById("jalapino").style.top = (jalapinoDirection)+"vh";
@@ -197,6 +230,26 @@ function ingredientsOpacity(ingredients){
 
 function moveBowlOut(bowlDistance){
     document.getElementById("bowl").style.left = (bowlDistance)+"vw";
+}
+
+function moveProcessOut(processTop){
+    document.getElementById("process").style.top = processTop+"vh";
+}
+
+function moveEstimate(estimate){
+    document.getElementById("estimate").style.top = estimate+"vh";
+}
+
+function moveEstimateOut(estimateOut){
+    document.getElementById("estimate").style.marginLeft = estimateOut+"vw";
+}
+
+function moveNutrimental(nutrimental){
+    document.getElementById("nutrimental").style.top = nutrimental+"vh";
+}
+
+function moveNutrimentalOut(nutrimentalOut){
+    document.getElementById("nutrimental").style.marginLeft = nutrimentalOut+"vw";
 }
 
 function moveResult(result){

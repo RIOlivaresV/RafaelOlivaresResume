@@ -1,0 +1,51 @@
+#result{
+    position: absolute;
+    left: 100vw;
+    top:15vh;
+}
+
+#estimate{
+    float: left;
+    width: 50%;
+    position: absolute;
+}
+
+.time{
+    font-size: 2vh;
+    float: left;
+    padding: 1vh;
+    width: 33%;
+}
+
+.resultRight{
+    float: right;
+    width: 50%;
+    padding-left: 5vw;
+}
+
+#nutrimental{
+    float: right;
+    width: 50%;
+    text-align: center;
+    padding-top: 40vh;
+    position: absolute;
+}
+
+#nutrimental table{
+    width: 90%;
+}
+
+#nutrimental th{
+    background-color: maroon;
+    color: white;
+} 
+
+#nutrimental td{
+    text-align: justify;
+    transition: 0.3s;
+    border: 1px solid;
+}
+
+#nutrimental td:hover{
+    height: 15vh;
+}

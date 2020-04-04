@@ -48,6 +48,9 @@ body{
     position: relative;
     text-align: center;
 }
+#onion a{
+    color: rgb(192, 127, 29);
+}
 #containerPicture{
     max-width: inherit;
     position: absolute;
@@ -60,13 +63,7 @@ body{
     text-align: center;
 }
 
-#result{
-    position: absolute;
-    left: 75vw;
-    top:15vh;
-    width: 100%;
-    text-align: center;
-}
+
 
 #textPresentation{
     width: 60%;
@@ -89,46 +86,6 @@ body{
 
 }
 
-.card{
-    background-color: transparent;
-    width: 100%;
-    height: 15vh;
-    perspective: 1000px;
-}
-
-.flip-card{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.card:hover .flip-card{
-    transform: rotateY(180deg);
-}
-
-.card-front, .card-back{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-.card-front{
-    background-color: royalblue;
-    color: white;
-}
-
-.card-back{
-    background-color: white;
-    color: black;
-    transform: rotateY(180deg);
-    z-index: 1;
-}
 
 div ul{
     padding-inline-start: 0;
