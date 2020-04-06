@@ -21,6 +21,7 @@ var estimate = 100;
 var nutrimental = 100;
 var estimateOut = 0;
 var nutrimentalOut = 0;
+var contactOpacy= 0;
 // console.log(scrollDown);
 
 // the first function is loading
@@ -39,6 +40,7 @@ window.onload = function(){
     document.getElementById("process").style.opacity = "0";
     document.getElementById("estimate").style.top = "100vh";
     document.getElementById("nutrimental").style.top = "100vh";
+    document.getElementById("contact").style.opacity = "0";
     // $('[data-toggle="tooltip"]').tooltip();  
 };
 
@@ -154,11 +156,14 @@ function scrollMoving(){
             movePicture(imageTop+=2);  
             moveEstimateOut(estimateOut+=2);
             moveNutrimentalOut(nutrimentalOut+=2);
+            appearContact(contactOpacy+=0.02)
+            console.log("opacity: "+contactOpacy);
         }else{
             moveResultDown(resultDown-=2);
             movePicture(imageTop-=2);  
             moveEstimateOut(estimateOut-=2);
             moveNutrimentalOut(nutrimentalOut-=2);
+            appearContact(contactOpacy-=0.02)
         }
     }
 
@@ -258,4 +263,8 @@ function moveResult(result){
 
 function moveResultDown(resultDown){
     document.getElementById("result").style.top = (resultDown)+"vh";
+}
+ 
+function appearContact(contactOpacy){
+    document.getElementById("contact").style.opacity = contactOpacy;
 }

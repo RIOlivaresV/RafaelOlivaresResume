@@ -252,18 +252,21 @@ function html_presentation($title){?>
                 <br>I love to code, travel, and cook. With my experience and knowledge, we might make the best
                 <br>recipe for your needs. </span>
                 </div>
-                <div>
-                <form action="" method="post">
-                    <div class="form-group">
-                        <input class="form-control" type="text" id="name" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <input class="from-control" type="text" id="email" pleceholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
-                    </div>
-                </form>
+                <div class="form">
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="nameText" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="email" id="emailText" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="comments" id="" cols="30" rows="10" placeholder="Add some comments"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-light">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
