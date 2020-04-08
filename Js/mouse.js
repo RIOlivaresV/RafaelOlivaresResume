@@ -1,5 +1,5 @@
 var leftPosotion = 0;
-var imageTop = 0;
+var imageTop = 5;
 var imageLeft = 0;
 var scrollWidth = 0;
 var ingredientsLeft = -80;
@@ -8,9 +8,11 @@ var directions = [0, 0];
 var isUp = true;
 var bowlDistance =  -50;
 var bowlDistanceH =  0;
-var jalapinoDirection = 0;
-var onionDirection = 0;
-var tomatoDirection = 0;
+var jalapinoDirection = 10;
+var onionDirection = 10;
+var tomatoDirection = 10;
+var jalapinoLeft = 0;
+var tomatoRight = 0;
 var result = 100;
 var resultDown = 15;
 var textLeft = 0;
@@ -22,7 +24,7 @@ var nutrimental = 100;
 var estimateOut = 0;
 var nutrimentalOut = 0;
 var contactOpacy= 0;
-// console.log(scrollDown);
+var page = 1;
 
 // the first function is loading
 window.onload = function(){
@@ -50,7 +52,9 @@ window.addEventListener("wheel", function(event){
         var directionY = event.deltaY;
         console.log("Delta: "+directionY);    
         if (directionY > 0) {
-            directions[0]++;
+            if (directions[0]<40) {
+                directions[0]++;   
+            }
             isUp = true;
             console.log(directions[0]);    
         }else{
@@ -82,106 +86,46 @@ window.addEventListener("wheel", function(event){
 //move the position of the scroll and move the animation
 function scrollMoving(){
     // console.log(directions[0]);
-    var progressbar= (directions[0]/240)*100;
+    var progressbar= (directions[0]/35)*100;
     document.getElementById("progressBar").style.width = progressbar+"%";
     //presentation
-    if (directions[0] >10 && directions[0] < 50) {
-        if (isUp) {
-            movePicture(imageTop-=2);  
-            moveText(textLeft+=2); 
-            ingredientsOpacity(ingredientOpacity+=0.05);
-        }else{
-            movePicture(imageTop+=2);   
-            moveText(textLeft-=2); 
-            ingredientsOpacity(ingredientOpacity-=0.05);
-        }
-        //bowl animation
-    } if (directions[0] > 60 && directions[0] < 110) {
-        if (isUp) {
-            moveBowl(bowlDistance+=1);
-            moveProcess(processPosition+=1, processOpacy+=0.02)
-        }else{
-            moveBowl(bowlDistance-=1);
-            moveProcess(processPosition-=1, processOpacy-=0.02)
-        }
-        //vegetables animation jalapino
-    } if (directions[0] > 100 && directions[0] < 110) {
-        if (isUp) {
-            moveJalapino(jalapinoDirection+=10);
-        }else{
-            moveJalapino(jalapinoDirection-=10);
-        }
-        // animation onion
-    } if (directions[0] > 105 && directions[0] < 115) {
-        if (isUp) {
-            moveOnion(onionDirection+=10);
-        }else{
-            moveOnion(onionDirection-=10);
-        }
-        // animation tomato
-    } if (directions[0] > 110 && directions[0] < 128) {
-        if (isUp) {
-            moveTomato(tomatoDirection+=10);
-        }else{
-            moveTomato(tomatoDirection-=10);
-        }
-        // animmation bowl out
-    } if (directions[0] > 150 && directions[0] < 190) {
-        if (isUp) {
-            moveBowlOut(bowlDistanceH-=2);
-            moveProcessOut(processTop-=2)
-            moveResult(result-=2.6);
-            moveEstimate(estimate-=2);
-            moveNutrimental(nutrimental-=2);
-        }else{
-            moveBowlOut(bowlDistanceH+=2);
-            moveProcessOut(processTop+=2)
-            moveResult(result+=2.6);
-            moveEstimate(estimate+=2);
-            moveNutrimental(nutrimental+=2);
-        }
+    if (directions[0] > 0 && directions[0] < 5) {
+        document.getElementById("title").innerHTML="";
     }
-    // MOve picture to the right
-    if (directions[0]==190) {
-        if (isUp) {
-            movePictureLeft(60);
-        }else{
-            movePictureLeft(0);
-        }
-    }
-    // move picture to down
-    if (directions[0] > 190 && directions[0] < 240) {
-        if (isUp) {
-            moveResultDown(resultDown+=2);
-            movePicture(imageTop+=2);  
-            moveEstimateOut(estimateOut+=2);
-            moveNutrimentalOut(nutrimentalOut+=2);
-            appearContact(contactOpacy+=0.02)
-            console.log("opacity: "+contactOpacy);
-        }else{
-            moveResultDown(resultDown-=2);
-            movePicture(imageTop-=2);  
-            moveEstimateOut(estimateOut-=2);
-            moveNutrimentalOut(nutrimentalOut-=2);
-            appearContact(contactOpacy-=0.02)
-        }
-    }
-
-    //text changing
-    if (directions[0] > 0 && directions[0] < 50) {
-        document.getElementById("title").innerHTML=""
-    }
-    if (directions[0] > 50 && directions[0] < 120) {
+    if (directions[0] ==5) {
         document.getElementById("title").innerHTML="<h5>Ingredients</h5>"
-    }
-    if (directions[0] > 120 && directions[0] < 170) {
+        if (isUp) {
+            firstMovingGoing();
+            ingredientsIndex(true);
+        }else{
+            firstMovingBack();
+            ingredientsIndex(false);
+        }
+    } if (directions[0] == 15) {
+        ingredientsIndex(false);
         document.getElementById("title").innerHTML="<h5>Process</h5>"
-    }
-    if (directions[0] > 170 && directions[0] < 210) {
+        if (isUp) {
+            secondMovingGoing();
+            ingredientsIndex(false);
+        }else{
+            secondMovingBack();
+            ingredientsIndex(true);
+        }
+    } if (directions[0] == 25) {
         document.getElementById("title").innerHTML="<h5>Result</h5>"
+        if (isUp) {
+            thirdMovingGoing();
+        }else{
+            thirdMovingBack();
+        }
     }
-    if (directions[0] > 210) {
+    if (directions[0] == 35) {
         document.getElementById("title").innerHTML="<h5>Contact me</h5>"
+        if (isUp) {
+            fourthMovingGoing();
+        }else{
+            fourthMovingBack();
+        }
     }
 }
 
@@ -209,18 +153,18 @@ function moveProcess(processPosition, processOpacy){
     document.getElementById("process").style.opacity = processOpacy;
 }
 // function that move the jalapino
-function moveJalapino(jalapinoDirection){
+function moveJalapino(jalapinoDirection, jalapinoLeft){
     document.getElementById("jalapino").style.top = (jalapinoDirection)+"vh";
-    document.getElementById("jalapino").style.left = (jalapinoDirection+5)+"vh";
+    document.getElementById("jalapino").style.left = (jalapinoLeft)+"vh";
 }
 // function that move onion
 function moveOnion(onionDirection){
-    document.getElementById("onion").style.top = (onionDirection+5)+"vh";
+    document.getElementById("onion").style.top = (onionDirection)+"vh";
 }
 // function that move tomato
-function moveTomato(tomatoDirection){
+function moveTomato(tomatoDirection, tomatoRight){
     document.getElementById("tomato").style.top = (tomatoDirection)+"vh";
-    document.getElementById("tomato").style.right = (tomatoDirection+5)+"vh";
+    document.getElementById("tomato").style.right = (tomatoRight)+"vh";
 }
 
 // function that move the ingrediets div
@@ -267,4 +211,299 @@ function moveResultDown(resultDown){
  
 function appearContact(contactOpacy){
     document.getElementById("contact").style.opacity = contactOpacy;
+}
+
+function ingredientsIndex(enter){
+    if (enter) {
+        document.getElementById("ingredients").style.zIndex = 1;
+    }else{
+        document.getElementById("ingredients").style.zIndex = -1;
+    }
+}
+
+
+// functions for every page
+function firstMovingGoing(){
+    var idMove = setInterval(frame, 20);
+    var pos = 0;
+    function frame(){
+        if (pos==40) {
+            clearInterval(idMove);
+        } else{
+            pos++;
+            movePicture(imageTop-=2);  
+            moveText(textLeft+=2); 
+            ingredientsOpacity(ingredientOpacity+=0.025);
+        }
+    }
+}
+
+function firstMovingBack(){
+    var idMove = setInterval(frame, 20);
+    var pos = 40;
+    function frame(){
+        if (pos==0) {
+            clearInterval(idMove);
+        } else{
+            pos--;
+            movePicture(imageTop+=2);   
+            moveText(textLeft-=2); 
+            ingredientsOpacity(ingredientOpacity-=0.025);
+        }
+    }
+}
+
+function secondMovingGoing(){
+    var idMove = setInterval(frame, 20);
+    var pos = 0;
+    function frame(){
+        if (pos==50) {
+            clearInterval(idMove);
+        } else {
+            pos++;
+            moveBowl(bowlDistance+=1);
+            moveProcess(processPosition+=1, processOpacy+=0.02)
+            if (pos>=30 && pos<=40) {
+                moveJalapino(jalapinoDirection+=10, jalapinoLeft+=10);
+            }
+            if (pos>=35 && pos<=45) {
+                moveOnion(onionDirection+=10);
+            }
+            if (pos>=40 && pos<=50) {
+                moveTomato(tomatoDirection+=10, tomatoRight+=10);
+            }
+        }
+    }
+}
+
+function secondMovingBack(){
+    var idMove = setInterval(frame, 20);
+    var pos = 50;
+    function frame(){
+        if (pos==0) {
+            clearInterval(idMove);
+        } else {
+            pos--;
+            moveBowl(bowlDistance-=1);
+            moveProcess(processPosition-=1, processOpacy-=0.02)
+            if (pos>=10 && pos<=20) {
+                moveJalapino(jalapinoDirection-=10, jalapinoLeft-=10);
+            }
+            if (pos>=5 && pos<=15) {
+                moveOnion(onionDirection-=10);
+            }
+            if (pos>=0 && pos<=10) {
+                moveTomato(tomatoDirection-=10, tomatoRight-=10);
+            }
+        }
+    }
+}
+
+function thirdMovingGoing(){
+    var idMove = setInterval(frame, 20);
+    var pos= 0;
+    function frame(){
+        if (pos==40) {
+            clearInterval(idMove);
+        }else{
+            pos++;
+            moveBowlOut(bowlDistanceH-=2);
+            moveProcessOut(processTop-=2)
+            moveResult(result-=2.6);
+            moveEstimate(estimate-=2);
+            moveNutrimental(nutrimental-=2);
+            movePictureLeft(60);
+        }
+    }
+}
+
+function thirdMovingBack(){
+    var idMove = setInterval(frame, 20);
+    var pos= 40;
+    function frame(){
+        if (pos==0) {
+            clearInterval(idMove);
+        }else{
+            pos--;
+            moveBowlOut(bowlDistanceH+=2);
+            moveProcessOut(processTop+=2)
+            moveResult(result+=2.6);
+            moveEstimate(estimate+=2);
+            moveNutrimental(nutrimental+=2);
+            movePictureLeft(0);
+        }
+    }
+}
+
+function fourthMovingGoing(){
+    var idMove = setInterval(frame, 20);
+    var pos=0;
+    function frame(){
+        if (pos==50) {
+            clearInterval(idMove);
+        }else{
+            pos++;
+            moveResultDown(resultDown+=2);
+            movePicture(imageTop+=2);  
+            moveEstimateOut(estimateOut+=2);
+            moveNutrimentalOut(nutrimentalOut+=2);
+            appearContact(contactOpacy+=0.02)
+        }
+    }
+}
+
+function fourthMovingBack(){
+    var idMove = setInterval(frame, 20);
+    var pos=50;
+    function frame(){
+        if (pos==0) {
+            clearInterval(idMove);
+        }else{
+            pos--;
+            moveResultDown(resultDown-=2);
+            movePicture(imageTop-=2);  
+            moveEstimateOut(estimateOut-=2);
+            moveNutrimentalOut(nutrimentalOut-=2);
+            appearContact(contactOpacy-=0.02)
+        }
+    }
+}
+
+// function for hovers in ingredientes
+function skillsClick(){
+    var idMove = setInterval(frame, 20);
+    var pos = 10;
+    var titleOpacy = 1;
+    var codeOpacy = 0;
+    document.getElementById("jalapino").style.boxShadow = "rgba(0, 0, 0, 0.5) 0px 4px 8px 0px";
+    function frame(){
+        if (pos==0) {
+            clearInterval(idMove);
+        }else{
+            pos--;
+            titleOpacy-=0.1;
+            codeOpacy+=0.1;
+            document.getElementById("closeSkills").style.visibility = "visible";
+            document.getElementById("jalapino").style.top = pos+"vh";
+            document.getElementById("skillsTitle").style.opacity = titleOpacy;
+            document.getElementById("coding").style.opacity = codeOpacy;
+        }
+    }
+}
+
+function skillsClose(){
+    var idMove = setInterval(frame, 20);
+    var pos = 0;
+    var titleOpacy = 0;
+    var codeOpacy = 1;
+    document.getElementById("jalapino").style.boxShadow = "none";
+    function frame(){
+        if (pos==10) {
+            clearInterval(idMove);
+        }else{
+            pos++;
+            titleOpacy+=0.1;
+            codeOpacy-=0.1;
+            document.getElementById("closeSkills").style.visibility = "hidden";
+            document.getElementById("jalapino").style.top = pos+"vh";
+            document.getElementById("skillsTitle").style.opacity = titleOpacy;
+            document.getElementById("coding").style.opacity = codeOpacy;
+        }
+    }
+}
+
+function experienceClick(){
+    var idMove = setInterval(frame, 20);
+    var pos = 10;
+    var titleOpacy = 1;
+    var experienceTop = 45;
+    var experienceOpacity = 0;
+    document.getElementById("onion").style.boxShadow = "rgba(0, 0, 0, 0.5) 0px 4px 8px 0px";
+    function frame(){
+        if (pos==0) {
+            clearInterval(idMove);
+        } else{
+            pos--;
+            experienceTop-=4.5;
+            titleOpacy-=0.1;
+            experienceOpacity+=0.1;
+            document.getElementById("closeExperience").style.visibility = "visible";
+            document.getElementById("onion").style.top = pos+"vh";
+            document.getElementById("experienceTitle").style.opacity = titleOpacy;
+            document.getElementById("experience").style.top = experienceTop+"vh";
+            document.getElementById("experience").style.opacity = experienceOpacity;
+        }
+    }
+}
+
+function experienceClose(){
+    var idMove = setInterval(frame, 20);
+    var pos = 0;
+    var titleOpacy = 0;
+    var experienceTop = 0;
+    var experienceOpacity = 1;
+    document.getElementById("onion").style.boxShadow = "none";
+    function frame(){
+        if (pos==10) {
+            clearInterval(idMove);
+        } else{
+            pos++;
+            experienceTop+=4.5;
+            titleOpacy+=0.1;
+            experienceOpacity-=0.1;
+            document.getElementById("closeExperience").style.visibility = "hidden";
+            document.getElementById("onion").style.top = pos+"vh";
+            document.getElementById("experienceTitle").style.opacity = titleOpacy;
+            document.getElementById("experience").style.top = experienceTop+"vh";
+            document.getElementById("experience").style.opacity = experienceOpacity;
+        }
+    }
+}
+
+function uxClick(){
+    var idMove = setInterval(frame, 20);
+    var pos = 10;
+    var titleOpacy = 1;
+    var uxleft = 40;
+    var uxOpacity = 0;
+    document.getElementById("tomato").style.boxShadow = "rgba(0, 0, 0, 0.5) 0px 4px 8px 0px";
+    function frame(){
+        if (pos==0) {
+            clearInterval(idMove);
+        } else{
+            pos--;
+            uxleft-=4;
+            titleOpacy-=0.1;
+            uxOpacity+=0.1;
+            document.getElementById("closeUX").style.visibility = "visible";
+            document.getElementById("tomato").style.top = pos+"vh";
+            document.getElementById("uxTitle").style.opacity = titleOpacy;
+            document.getElementById("ux").style.left = uxleft+"vw";
+            document.getElementById("ux").style.opacity = uxOpacity;
+        }
+    }
+}
+
+function uxClose(){
+    var idMove = setInterval(frame, 20);
+    var pos = 0;
+    var titleOpacy = 0;
+    var uxleft = 0;
+    var uxOpacity = 1;
+    document.getElementById("tomato").style.boxShadow = "none";
+    function frame(){
+        if (pos==10) {
+            clearInterval(idMove);
+        } else{
+            pos++;
+            uxleft+=4;
+            titleOpacy+=0.1;
+            uxOpacity-=0.1;
+            document.getElementById("closeUX").style.visibility = "hidden";
+            document.getElementById("tomato").style.top = pos+"vh";
+            document.getElementById("uxTitle").style.opacity = titleOpacy;
+            document.getElementById("ux").style.left = uxleft+"vw";
+            document.getElementById("ux").style.opacity = uxOpacity;
+        }
+    }
 }

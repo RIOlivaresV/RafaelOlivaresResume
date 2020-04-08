@@ -33,20 +33,23 @@ body{
 #ingredients{
     position: absolute;
     float: left;  
+    z-index: 1;
 }
 
 .ingredients{
     transition: .5 ease;
     opacity: 1;
     text-align: center;
+    cursor: pointer;
 }
-.ingredients:hover{
+/* .ingredients:hover{
     opacity: 0.5;
-}
+} */
 
 #jalapino, #onion, #tomato{
     position: relative;
     text-align: center;
+    top: 10vh;
 }
 #onion a{
     color: rgb(192, 127, 29);

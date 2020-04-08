@@ -1,0 +1,11 @@
+#contact{
+    position: absolute;
+}
+
+.form textarea{
+    height: 20vh;
+}
+
+.resume{
+    text-align: right;
+}

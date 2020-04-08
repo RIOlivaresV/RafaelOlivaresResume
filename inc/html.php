@@ -16,6 +16,7 @@ function html_header($title){?>
     <link rel="stylesheet" href="css/ingredients.css">
     <link rel="stylesheet" href="css/process.css">
     <link rel="stylesheet" href="css/result.css">
+    <link rel="stylesheet" href="css/contact.css">
     <script type="text/javascript" src="Js/mouse.js"></script>
 </head>
 <body>
@@ -44,8 +45,12 @@ function html_presentation($title){?>
             <div class="d-flex justify-content-center">
                 <div  id="ingredients" class="container">
                     <div class="row">
-                        <div id="jalapino" class="col-sm" >
-                            <img src="Img/jalapino.png" class="ingredients">
+                        <div id="jalapino" class="col-sm">
+                            <div class="closeEvent" id="closeSkills"><span onclick="skillsClose()"><b>X</b></span></div>
+                            <img src="Img/jalapino.png" class="ingredients" onclick="skillsClick()">
+                            <div class="title" id="skillsTitle">
+                                <h1>Skills</h1>
+                            </div>
                             <div id="coding">
                                 <ul style="list-style-type:none">
                                     <li>
@@ -105,9 +110,13 @@ function html_presentation($title){?>
                                 </ul>
                             </div>
                         </div>
-                        <div id="onion" class="col-sm">
-                            <img src="Img/onion.png" class="ingredients">
-                            <div id="experience">
+                        <div id="onion" class="col-sm" >
+                            <div class="closeEvent" id="closeExperience"><span onclick="experienceClose()"><b>X</b></span></div>
+                            <img src="Img/onion.png" class="ingredients" onclick="experienceClick()">
+                            <div class="title" id="experienceTitle">
+                                <h1>Experience</h1>
+                            </div>
+                            <div id="experience" >
                                 <ul style="list-style-type:none">
                                     <li>
                                         <div class="card">
@@ -168,8 +177,12 @@ function html_presentation($title){?>
                                 </ul>
                             </div>
                         </div>
-                        <div id="tomato" class="col-sm">
-                            <img src="Img/tomato.png" class="ingredients">
+                        <div id="tomato" class="col-sm" >
+                            <div class="closeEvent" id="closeUX"><span onclick="uxClose()"><b>X</b></span></div>
+                            <img src="Img/tomato.png" class="ingredients" onclick="uxClick()">
+                            <div class="title" id="uxTitle">
+                                <h1>UX</h1>
+                            </div>
                             <div id="ux">
                                 <ul style="list-style-type:none">
                                     <li>
@@ -247,11 +260,16 @@ function html_presentation($title){?>
             </div>
             <div id="contact">
                 <div id="aboutME">
-                <h2>This is Rafael Olivares</h2>
-                <span>I am Full Stack Developer. I am living in Vancouver Canada, but I was born in Mexico City
-                <br>I love to code, travel, and cook. With my experience and knowledge, we might make the best
-                <br>recipe for your needs. </span>
+                    <h2>This is Rafael Olivares</h2>
+                    <span>I am Full Stack Developer. I am living in Vancouver Canada, but I was born in Mexico City
+                    <br>I love to code, travel, and cook. With my experience and knowledge, we might make the best
+                    <br>recipe for your needs. </span>
                 </div>
+                <div class="resume">
+                    <a href="documents\Rafael Olivares Resume Dic 2019.pdf" target="_blank">
+                        <button class="btn btn-primary">Download Resume</button>
+                    </a>
+                </div><br>
                 <div class="form">
                     <form action="" method="post">
                         <div class="form-group">
@@ -261,7 +279,7 @@ function html_presentation($title){?>
                             <input class="form-control" type="email" id="emailText" placeholder="name@example.com">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" name="comments" id="" cols="30" rows="10" placeholder="Add some comments"></textarea>
+                            <textarea class="form-control" id="comments" cols="10" rows="10" placeholder="Add some comments"></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-light">Submit</button>

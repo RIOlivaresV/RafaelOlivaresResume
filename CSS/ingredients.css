@@ -5,6 +5,15 @@
     margin-bottom: 1vh;
 }
 
+.title{
+    position: absolute;
+    width: 100%;
+}
+
+#coding{
+    opacity: 0;
+}
+
 .skill{
     text-align: center;
     background-color: green;
@@ -66,6 +75,12 @@
 
 
 /* Experience */
+#experience{
+    position: relative;
+    top:45vh;
+    opacity: 0;
+}
+
 .card{
     background-color: transparent;
     width: 100%;
@@ -123,4 +138,18 @@
 
 .item:hover{
     transform:scale(1.1);
+}
+
+#ux{
+    position: absolute;
+    width: 100%;
+    left: 40vw;
+    opacity: 0;
+}
+
+.closeEvent{
+    text-align: right;
+    cursor: pointer;
+    visibility: hidden;
+    color: dimgrey;
 }
