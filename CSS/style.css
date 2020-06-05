@@ -30,50 +30,40 @@ body{
     float: left;
 }
 
-#ingredients{
-    position: absolute;
-    float: left;  
-    z-index: 1;
-}
 
-.ingredients{
-    transition: .5 ease;
-    opacity: 1;
-    text-align: center;
-    cursor: pointer;
-}
 /* .ingredients:hover{
     opacity: 0.5;
 } */
 
-#jalapino, #onion, #tomato{
-    position: relative;
-    text-align: center;
-    top: 10vh;
-}
+
 #onion a{
     color: rgb(192, 127, 29);
 }
 #containerPicture{
     max-width: inherit;
     position: absolute;
+    bottom: 5vw;
+    top:-75vh;
 }
 
 #bowl{
     position: absolute;
-    bottom: -50vh;
+    bottom: -38vh;
     width: 100%;
     text-align: center;
+    z-index: -1;
 }
 
 
 
 #textPresentation{
     width: 60%;
-    float: right;
-    font-size: 8vw;
+    font-size: 8.5vw;
     position: absolute;
-    margin-left: 35%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .progress-container{

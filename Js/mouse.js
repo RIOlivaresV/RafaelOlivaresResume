@@ -1,12 +1,12 @@
 var leftPosotion = 0;
-var imageTop = 5;
+var imageTop = -75;
 var imageLeft = 0;
 var scrollWidth = 0;
 var ingredientsLeft = -80;
 var ingredientOpacity = 0;
-var directions = [0, 0];
+var directions = 0;
 var isUp = true;
-var bowlDistance =  -50;
+var bowlDistance =  -38;
 var bowlDistanceH =  0;
 var jalapinoDirection = 10;
 var onionDirection = 10;
@@ -15,9 +15,9 @@ var jalapinoLeft = 0;
 var tomatoRight = 0;
 var result = 100;
 var resultDown = 15;
-var textLeft = 0;
-var processPosition = -40;
-var processTop= 10;
+var textLeft = 5;
+var processPosition = -50;
+var processTop= 72;
 var processOpacy = 0;
 var estimate = 100;
 var nutrimental = 100;
@@ -25,6 +25,10 @@ var estimateOut = 0;
 var nutrimentalOut = 0;
 var contactOpacy= 0;
 var page = 1;
+var progress = [['Analysing & requirements', 'First of all, the <b>requirements</b> have to be <b>analysed</b> to make an better plan. <br><i>Divide and conquer</i>'],
+                ['Documentation', 'Also, having an appropriate witness of our work is always a good way to keep our progress organized.'],
+                ['Coding & good practice', 'To make a undertable code, it is necessary <b>good developoment practice'],
+                ['Testing', 'A Chef always says "How you know your food is good if you do not taste it"']];
 
 // the first function is loading
 window.onload = function(){
@@ -37,9 +41,9 @@ window.onload = function(){
     this.scrollWidth = $('body').width();
     this.leftPosotion = document.getElementById("scene").offsetLeft;
     document.getElementById("ingredients").style.opacity = "0";
-    document.getElementById("process").style.left = "-40vw";
-    document.getElementById("process").style.top = "10vh";
+    document.getElementById("process").style.top = "72vh";
     document.getElementById("process").style.opacity = "0";
+    document.getElementById("bowl").style.opacity = "0";
     document.getElementById("estimate").style.top = "100vh";
     document.getElementById("nutrimental").style.top = "100vh";
     document.getElementById("contact").style.opacity = "0";
@@ -48,51 +52,69 @@ window.onload = function(){
 
 // event to get the wheel moving
 window.addEventListener("wheel", function(event){
+    console.log("deltaY:"+event.delta);
+    console.log("WheelDelta:"+event.wheelDelta);
+    var WheelDelta = Math.abs(event.wheelDelta);
     if (event.wheelDeltaX == 0) {   //for up and down
         var directionY = event.deltaY;
         console.log("Delta: "+directionY);    
         if (directionY > 0) {
-            if (directions[0]<40) {
-                directions[0]++;   
+            if (directions<4000) {
+                if(WheelDelta==120){
+                    directions+=100;
+                }else{
+                    directions+=20;
+                } 
+                isUp = true; 
             }
-            isUp = true;
-            console.log(directions[0]);    
         }else{
-            if (directions[0]>0) {  
-                directions[0]--;
+            if (directions>0) { 
+                if(WheelDelta==120){
+                    directions-=100;
+                }else{
+                    directions-=20;
+                }  
                 isUp = false;
-                console.log(directions[0]);       
+                // console.log(directions);       
             }
         }
+        console.log("Distance: "+directions); 
         scrollMoving();
     }if (event.wheelDeltaY == 0) {  //for left and right
         var directionX = event.deltaX;
         console.log("Delta: "+directionX);    
         if (directionX > 0) {
-            directions[0]++;
+            if(WheelDelta==120){
+                directions+=100;
+            }else{
+                directions+=20;
+            }  
             isUp = true;
-            console.log(directions[0]);    
         }else{
-            if (directions[0]>0) {
-                directions[0]--;
+            if (directions>0) {
+                if(WheelDelta==120){
+                    directions-=100;
+                }else{
+                    directions-=20;
+                }  
                 isUp = false;
-                console.log(directions[0]);       
             }   
         }
+        console.log("Distance: "+directions);   
         scrollMoving();
     }
 });
 
 //move the position of the scroll and move the animation
 function scrollMoving(){
-    // console.log(directions[0]);
-    var progressbar= (directions[0]/35)*100;
+    // console.log(directions);
+    var progressbar= (directions/4000)*100;
     document.getElementById("progressBar").style.width = progressbar+"%";
     //presentation
-    if (directions[0] > 0 && directions[0] < 5) {
+    if (directions > 0 && directions < 500) {
         document.getElementById("title").innerHTML="";
     }
-    if (directions[0] ==5) {
+    if (directions ==500) {
         document.getElementById("title").innerHTML="<h5>Ingredients</h5>"
         if (isUp) {
             firstMovingGoing();
@@ -101,7 +123,7 @@ function scrollMoving(){
             firstMovingBack();
             ingredientsIndex(false);
         }
-    } if (directions[0] == 15) {
+    } if (directions == 1500) {
         ingredientsIndex(false);
         document.getElementById("title").innerHTML="<h5>Process</h5>"
         if (isUp) {
@@ -111,7 +133,7 @@ function scrollMoving(){
             secondMovingBack();
             ingredientsIndex(true);
         }
-    } if (directions[0] == 25) {
+    } if (directions == 2500) {
         document.getElementById("title").innerHTML="<h5>Result</h5>"
         if (isUp) {
             thirdMovingGoing();
@@ -119,7 +141,7 @@ function scrollMoving(){
             thirdMovingBack();
         }
     }
-    if (directions[0] == 35) {
+    if (directions == 3500) {
         document.getElementById("title").innerHTML="<h5>Contact me</h5>"
         if (isUp) {
             fourthMovingGoing();
@@ -137,15 +159,16 @@ function movePicture(imageTop){
 }
 
 function moveText(textLeft){
-    document.getElementById("textPresentation").style.left = (textLeft)+"vw";
+    document.getElementById("textPresentation").style.bottom = (textLeft)+"vw";
 }
 
 function movePictureLeft(imageLeft){
     document.getElementById("containerPicture").style.left = (imageLeft)+"vw";
 }
 //move the bowwl to the top
-function moveBowl(bowlDistance){
+function moveBowl(bowlDistance, bowlOpacity){
     document.getElementById("bowl").style.bottom = (bowlDistance)+"vh";
+    document.getElementById("bowl").style.opacity = (bowlOpacity)+"";
 }
 
 function moveProcess(processPosition, processOpacy){
@@ -231,7 +254,6 @@ function firstMovingGoing(){
             clearInterval(idMove);
         } else{
             pos++;
-            movePicture(imageTop-=2);  
             moveText(textLeft+=2); 
             ingredientsOpacity(ingredientOpacity+=0.025);
         }
@@ -246,7 +268,6 @@ function firstMovingBack(){
             clearInterval(idMove);
         } else{
             pos--;
-            movePicture(imageTop+=2);   
             moveText(textLeft-=2); 
             ingredientsOpacity(ingredientOpacity-=0.025);
         }
@@ -261,7 +282,7 @@ function secondMovingGoing(){
             clearInterval(idMove);
         } else {
             pos++;
-            moveBowl(bowlDistance+=1);
+            moveBowl(bowlDistance+=1, processOpacy+=0.02);
             moveProcess(processPosition+=1, processOpacy+=0.02)
             if (pos>=30 && pos<=40) {
                 moveJalapino(jalapinoDirection+=10, jalapinoLeft+=10);
@@ -284,7 +305,7 @@ function secondMovingBack(){
             clearInterval(idMove);
         } else {
             pos--;
-            moveBowl(bowlDistance-=1);
+            moveBowl(bowlDistance-=1, processOpacy-=0.02);
             moveProcess(processPosition-=1, processOpacy-=0.02)
             if (pos>=10 && pos<=20) {
                 moveJalapino(jalapinoDirection-=10, jalapinoLeft-=10);
@@ -308,7 +329,7 @@ function thirdMovingGoing(){
         }else{
             pos++;
             moveBowlOut(bowlDistanceH-=2);
-            moveProcessOut(processTop-=2)
+            moveProcessOut(processTop-=3)
             moveResult(result-=2.6);
             moveEstimate(estimate-=2);
             moveNutrimental(nutrimental-=2);
@@ -326,7 +347,7 @@ function thirdMovingBack(){
         }else{
             pos--;
             moveBowlOut(bowlDistanceH+=2);
-            moveProcessOut(processTop+=2)
+            moveProcessOut(processTop+=3)
             moveResult(result+=2.6);
             moveEstimate(estimate+=2);
             moveNutrimental(nutrimental+=2);
@@ -383,7 +404,6 @@ function skillsClick(){
             pos--;
             titleOpacy-=0.1;
             codeOpacy+=0.1;
-            document.getElementById("closeSkills").style.visibility = "visible";
             document.getElementById("jalapino").style.top = pos+"vh";
             document.getElementById("skillsTitle").style.opacity = titleOpacy;
             document.getElementById("coding").style.opacity = codeOpacy;
@@ -404,7 +424,6 @@ function skillsClose(){
             pos++;
             titleOpacy+=0.1;
             codeOpacy-=0.1;
-            document.getElementById("closeSkills").style.visibility = "hidden";
             document.getElementById("jalapino").style.top = pos+"vh";
             document.getElementById("skillsTitle").style.opacity = titleOpacy;
             document.getElementById("coding").style.opacity = codeOpacy;
@@ -427,7 +446,6 @@ function experienceClick(){
             experienceTop-=4.5;
             titleOpacy-=0.1;
             experienceOpacity+=0.1;
-            document.getElementById("closeExperience").style.visibility = "visible";
             document.getElementById("onion").style.top = pos+"vh";
             document.getElementById("experienceTitle").style.opacity = titleOpacy;
             document.getElementById("experience").style.top = experienceTop+"vh";
@@ -451,7 +469,6 @@ function experienceClose(){
             experienceTop+=4.5;
             titleOpacy+=0.1;
             experienceOpacity-=0.1;
-            document.getElementById("closeExperience").style.visibility = "hidden";
             document.getElementById("onion").style.top = pos+"vh";
             document.getElementById("experienceTitle").style.opacity = titleOpacy;
             document.getElementById("experience").style.top = experienceTop+"vh";
@@ -475,7 +492,6 @@ function uxClick(){
             uxleft-=4;
             titleOpacy-=0.1;
             uxOpacity+=0.1;
-            document.getElementById("closeUX").style.visibility = "visible";
             document.getElementById("tomato").style.top = pos+"vh";
             document.getElementById("uxTitle").style.opacity = titleOpacy;
             document.getElementById("ux").style.left = uxleft+"vw";
@@ -499,7 +515,6 @@ function uxClose(){
             uxleft+=4;
             titleOpacy+=0.1;
             uxOpacity-=0.1;
-            document.getElementById("closeUX").style.visibility = "hidden";
             document.getElementById("tomato").style.top = pos+"vh";
             document.getElementById("uxTitle").style.opacity = titleOpacy;
             document.getElementById("ux").style.left = uxleft+"vw";

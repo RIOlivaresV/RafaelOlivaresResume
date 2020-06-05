@@ -45,14 +45,13 @@ function html_presentation($title){?>
             <div class="d-flex justify-content-center">
                 <div  id="ingredients" class="container">
                     <div class="row">
-                        <div id="jalapino" class="col-sm">
-                            <div class="closeEvent" id="closeSkills"><span onclick="skillsClose()"><b>X</b></span></div>
-                            <img src="Img/jalapino.png" class="ingredients" onclick="skillsClick()">
+                        <div id="jalapino" class="col-sm" onmouseover="skillsClick()" onmouseout="skillsClose()">
+                            <img src="Img/jalapino.png" class="ingredients" >
                             <div class="title" id="skillsTitle">
                                 <h1>Skills</h1>
                             </div>
                             <div id="coding">
-                                <ul style="list-style-type:none">
+                                <ul>
                                     <li>
                                         <div class="skill">C#</div>
                                         <div class="bar">
@@ -95,13 +94,13 @@ function html_presentation($title){?>
                                             <div class="porcent" id="css">90%</div>
                                         </div>
                                     </li>
-                                    <!-- <li>
-                                        <div class="skill">SQL / MySQL</div>
+                                    <li>
+                                        <div class="skill">SQL</div>
                                         <div class="bar">
-                                            <div id="db">SQL / MySQL</div>
+                                            <div class="porcent" id="db">70%</div>
                                         </div>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <div class="skill">MongoDB</div>
                                         <div class="bar">
                                             <div id="mongo">MongoDB</div>
@@ -110,81 +109,59 @@ function html_presentation($title){?>
                                 </ul>
                             </div>
                         </div>
-                        <div id="onion" class="col-sm" >
-                            <div class="closeEvent" id="closeExperience"><span onclick="experienceClose()"><b>X</b></span></div>
-                            <img src="Img/onion.png" class="ingredients" onclick="experienceClick()">
+                        <div id="onion" class="col-sm" onmouseover="experienceClick()" onmouseout="experienceClose()">
+                            <img src="Img/onion.png" class="ingredients" >
                             <div class="title" id="experienceTitle">
                                 <h1>Experience</h1>
                             </div>
                             <div id="experience" >
-                                <ul style="list-style-type:none">
+                                <ul>
                                     <li>
                                         <div class="card">
-                                            <div class="flip-card">
-                                                <div class="card-front">
-                                                   <h3 class="align-middle">Fresh Fast Pizza</h3>
-                                                </div>
-                                                <div class="card-back align-middle">
-                                                    <a href="http://freshfastpizza.ca/" target="_blank" data-toggle="tooltip" title="More about Fresh Fast Pizza"><h4>Fresh Fast Pizza</h4></a>
-                                                    <span>Oct 2019 - Feb 2020</span><br>
-                                                    <span>WordPress, HTML, CSS</span>
-                                                </div>
+                                            <div class="card-info align-middle">
+                                                <a href="http://freshfastpizza.ca/" target="_blank" data-toggle="tooltip" title="More about Fresh Fast Pizza"><h4>Fresh Fast Pizza</h4></a>
+                                                <span>Oct 2019 - Feb 2020</span><br>
+                                                <span>WordPress, HTML, CSS</span>
                                             </div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="card">
-                                            <div class="flip-card">
-                                                <div class="card-front">
-                                                   <h3 class="align-middle">Autostrada Osteria</h3>
-                                                </div>
-                                                <div class="card-back align-middle">
-                                                    <a href="https://autostrada.azurewebsites.net/" target="_blank" data-toggle="tooltip" title="More about Autostrada Osteria"><h4>Autostrada Osteria</h4></a>
-                                                    <span>Nov 2018</span><br>
-                                                    <span>HTML, CSS, JavaScript</span>
-                                                </div>
+                                            <div class="card-info align-middle">
+                                                <a href="https://autostrada.azurewebsites.net/" target="_blank" data-toggle="tooltip" title="More about Autostrada Osteria"><h4>Autostrada Osteria</h4></a>
+                                                <span>Nov 2018</span><br>
+                                                <span>HTML, CSS, JavaScript</span>
                                             </div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="card">
-                                            <div class="flip-card">
-                                                <div class="card-front">
-                                                   <h3 class="align-middle">Smart Byte</h3>
-                                                </div>
-                                                <div class="card-back align-middle">
-                                                    <a href="http://www.smartbyte.com.mx/" target="_blank" data-toggle="tooltip" title="More about Smart Byte"><h4>Smart Byte</h4></a>
-                                                    <span>Mar 2015 - Jul 2017</span><br>
-                                                    <span>C#, Devexpress, Addin-Express</span>
-                                                </div>
+                                            <div class="card-info align-middle">
+                                                <a href="http://www.smartbyte.com.mx/" target="_blank" data-toggle="tooltip" title="More about Smart Byte"><h4>Smart Byte</h4></a>
+                                                <span>Mar 2015 - Jul 2017</span><br>
+                                                <span>C#, Devexpress, Addin-Express</span>
                                             </div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="card">
-                                            <div class="flip-card">
-                                                <div class="card-front">
-                                                    <h3 class="align-middle">Atento Servicios</h3>
-                                                </div>
-                                                <div class="card-back align-middle">
-                                                <a href="http://atento.com/locations/mexico/" target="_blank" data-toggle="tooltip" title="More about Atento Servicios"><h4>Atento Servicios</h4></a>
-                                                    <span>Mar 2013 - Mar 2015</span><br>
-                                                    <span>PHP, WAMP, MySQL</span>
-                                                </div>
+                                            <div class="card-info align-middle">
+                                            <a href="http://atento.com/locations/mexico/" target="_blank" data-toggle="tooltip" title="More about Atento Servicios"><h4>Atento Servicios</h4></a>
+                                                <span>Mar 2013 - Mar 2015</span><br>
+                                                <span>PHP, WAMP, MySQL</span>
                                             </div>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div id="tomato" class="col-sm" >
-                            <div class="closeEvent" id="closeUX"><span onclick="uxClose()"><b>X</b></span></div>
-                            <img src="Img/tomato.png" class="ingredients" onclick="uxClick()">
+                        <div id="tomato" class="col-sm" onmouseout="uxClose()" onmouseover="uxClick()">
+                            <img src="Img/tomato.png" class="ingredients" >
                             <div class="title" id="uxTitle">
                                 <h1>UX</h1>
                             </div>
                             <div id="ux">
-                                <ul style="list-style-type:none">
+                                <ul>
                                     <li>
                                         <div class="item">
                                             <h3>Responsive</h3>
@@ -211,17 +188,22 @@ function html_presentation($title){?>
             </div>
             <div class="processContainer">
                 <div id="process">
-                    <ol>
-                        <li>Analysing and requirements</li>
-                        <li>Making documentation</li>
-                        <li>Testing</li>
-                        <li>Coding good practice</li>
-                        <li>Good understanding</li>
-                    </ol>
+                <div class="card-front">
+                            <h2 class="step">Step 1. Analysing & requirements</h2>
+                            <span class="description">First of all, the <b>requirements</b> have to be <b>analysed</b> to make an better plan. <br>
+                                <i>Divide and conquer</i>
+                            </span>
+                    </div>
+                    <div class="card-back">
+                            <h2 class="step"></h2>
+                            <span class="description"></span>
+                    </div>
                 </div>
             </div>
-            <div id="bowl" class="align-self-center">
-                <img src="Img/bowl.png">
+            <div id="bowl" class="align-self-center container">
+                <div class="back"><</div>
+                <div class="bowlImg"><img src="Img/bowl.png"></div>
+                <div class="next">></div>
             </div>
             <div id="result" class="align-self-center">
                 <img src="Img/result.png">
