@@ -44,15 +44,10 @@ body{
     position: absolute;
     bottom: 5vw;
     top:-75vh;
-}
-
-#bowl{
-    position: absolute;
-    bottom: -38vh;
-    width: 100%;
-    text-align: center;
     z-index: -1;
 }
+
+
 
 
 

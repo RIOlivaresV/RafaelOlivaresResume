@@ -1,6 +1,7 @@
 #contact{
     position: absolute;
     top: 10vh;
+    z-index: -1;
 }
 
 .form textarea{

@@ -6,7 +6,7 @@ var ingredientsLeft = -80;
 var ingredientOpacity = 0;
 var directions = 0;
 var isUp = true;
-var bowlDistance =  -38;
+var bowlDistance =  -34;
 var bowlDistanceH =  0;
 var jalapinoDirection = 10;
 var onionDirection = 10;
@@ -47,6 +47,8 @@ window.onload = function(){
     document.getElementById("estimate").style.top = "100vh";
     document.getElementById("nutrimental").style.top = "100vh";
     document.getElementById("contact").style.opacity = "0";
+    document.getElementById("step1").innerHTML = "Step 1: "+progress[0][0];
+    document.getElementById("description1").innerHTML = progress[0][1];
     // $('[data-toggle="tooltip"]').tooltip();  
 };
 
@@ -145,8 +147,10 @@ function scrollMoving(){
         document.getElementById("title").innerHTML="<h5>Contact me</h5>"
         if (isUp) {
             fourthMovingGoing();
+            contactIndex(true);
         }else{
             fourthMovingBack();
+            contactIndex(false);
         }
     }
 }
@@ -244,6 +248,14 @@ function ingredientsIndex(enter){
     }
 }
 
+function contactIndex(enter){
+    if (enter) {
+        document.getElementById("contact").style.zIndex = 1;
+    }else{
+        document.getElementById("contact").style.zIndex = -1;
+    }
+}
+
 
 // functions for every page
 function firstMovingGoing(){
@@ -328,7 +340,7 @@ function thirdMovingGoing(){
             clearInterval(idMove);
         }else{
             pos++;
-            moveBowlOut(bowlDistanceH-=2);
+            moveBowlOut(bowlDistanceH-=3);
             moveProcessOut(processTop-=3)
             moveResult(result-=2.6);
             moveEstimate(estimate-=2);
@@ -346,7 +358,7 @@ function thirdMovingBack(){
             clearInterval(idMove);
         }else{
             pos--;
-            moveBowlOut(bowlDistanceH+=2);
+            moveBowlOut(bowlDistanceH+=3);
             moveProcessOut(processTop+=3)
             moveResult(result+=2.6);
             moveEstimate(estimate+=2);

@@ -18,6 +18,7 @@ function html_header($title){?>
     <link rel="stylesheet" href="css/result.css">
     <link rel="stylesheet" href="css/contact.css">
     <script type="text/javascript" src="Js/mouse.js"></script>
+    <script type="text/javascript" src="Js/bottons.js"></script>
 </head>
 <body>
 <?php
@@ -186,24 +187,22 @@ function html_presentation($title){?>
                     </div>
                 </div>
             </div>
-            <div class="processContainer">
-                <div id="process">
+            <div id="process" class="processContainer">
                 <div class="card-front">
-                            <h2 class="step">Step 1. Analysing & requirements</h2>
-                            <span class="description">First of all, the <b>requirements</b> have to be <b>analysed</b> to make an better plan. <br>
-                                <i>Divide and conquer</i>
-                            </span>
-                    </div>
-                    <div class="card-back">
-                            <h2 class="step"></h2>
-                            <span class="description"></span>
-                    </div>
+                        <h2 id="step1">.</h2>
+                        <span id="description1">.</span>
+                </div>  
+                <div class="card-back">
+                        <h2 id="step2">.</h2>
+                        <span id="description2">.</span>
                 </div>
             </div>
-            <div id="bowl" class="align-self-center container">
-                <div class="back"><</div>
-                <div class="bowlImg"><img src="Img/bowl.png"></div>
-                <div class="next">></div>
+            <div id="bowl" class="align-self-center ">
+                <div class="row">
+                    <div class="col-sm"><div class=" progressBotton" id="back" onclick="backProcess()"><<<</div></div>
+                    <div class="bowlImg col-sm"><img src="Img/bowl.png"></div>
+                    <div class="col-sm"><div class=" progressBotton" id="next" onclick="nextProcess()">>>></div></div>
+                </div>
             </div>
             <div id="result" class="align-self-center">
                 <img src="Img/result.png">
